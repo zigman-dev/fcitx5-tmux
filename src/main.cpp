@@ -231,6 +231,9 @@ public:
         if (!handled) {
             auto keyStr = toTmuxKey(key);
             if (!keyStr.empty()) {
+                if (keyStr == ";") {
+                    keyStr = "\\" + keyStr;
+                }
                 startProcess({"tmux", "send-key", keyStr});
             }
         }
